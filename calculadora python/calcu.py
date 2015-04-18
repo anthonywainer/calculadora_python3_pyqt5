@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
  
 # @anthony wainer
@@ -11,20 +11,21 @@ from PyQt4 import QtCore, QtGui, uic
 form_class = uic.loadUiType("calculadora.ui")[0]
  
 def num(self,s):
-    
     self.textB.insertPlainText(s)
 
-def operador(self,div,op):
+def operador(self,op):
+  div = self.textB.toPlainText()
   if(validarExpresion(div)):
     nuevo = div + op
-    self.textB.clear()
-    self.textB.insertPlainText(nuevo)
+    pantalla(self,nuevo)
 
-    
+def pantalla(self,a):
+  self.textB.clear()
+  self.textB.insertPlainText(a)
 
 def validarExpresion(div):
   ultimo = div[len(div)-1]
-  simbolos = "+-*/"
+  simbolos = "+-*/."
   encontro = True
   for i in range(len(simbolos)):
     if(simbolos[i] == ultimo):
@@ -35,10 +36,9 @@ def validarExpresion(div):
 def calcular (self,div):
   if (len(div)>2):
     resultado = eval(str(div))
-    self.textB.clear()
-    self.textB.insertPlainText(str(resultado))
+    pantalla(self,str(resultado))
   else:
-    print "ingrese una expresion para calcular"
+    pantalla(self,"ingrese una expresion para calcular")
 
 class MyWindowClass(QtGui.QMainWindow, form_class):
  def __init__(self, parent=None):
@@ -97,20 +97,15 @@ class MyWindowClass(QtGui.QMainWindow, form_class):
     return num(self,")")   
 
  def btms(self):
-  div = self.textB.toPlainText()
-  return operador(self,div,'+');   
+  return operador(self,'+');   
  def btmen(self):
-  div = self.textB.toPlainText()
-  return operador(self,div,'-');    
+  return operador(self,'-');    
  def btpo(self):
-  div = self.textB.toPlainText()
-  return operador(self,div,'*');    
+  return operador(self,'*');    
  def btdi(self):
-  div = self.textB.toPlainText()
-  return operador(self,div,'/');    
+  return operador(self,'/');    
  def btpu(self):
-  div = self.textB.toPlainText()
-  return operador(self,div,'.');   
+  return operador(self,'.');   
  def btd(self):
   p = self.textB.toPlainText()
   pa = ""
@@ -119,8 +114,7 @@ class MyWindowClass(QtGui.QMainWindow, form_class):
       pa += ""
     else:
          pa += p[i]
-    self.textB.clear()
-    self.textB.insertPlainText(pa)
+    pantalla(self,str(pa))
  def bc(self):
   self.textB.clear()
 
@@ -131,16 +125,16 @@ class MyWindowClass(QtGui.QMainWindow, form_class):
  def pot(self):
   p = self.textB.toPlainText()
   r = pow(float(p),2)
-  self.textB.clear()
-  self.textB.insertPlainText(str(r))
+  pantalla(self,str(r))
+  
 
 
  def rad(self):
   p = self.textB.toPlainText()
   r = math.sqrt(float(p))
-  self.textB.clear()
-  self.textB.insertPlainText(str(r))
+  pantalla(self,str(r))
  
+
 app = QtGui.QApplication(sys.argv)
 MyWindow = MyWindowClass(None)
 MyWindow.show()
