@@ -1,15 +1,15 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
- 
+
 # @anthony wainer
-  
+
 import sys, math
-from PyQt4 import QtCore, QtGui, uic
+from PyQt5 import QtCore, QtGui, uic,QtWidgets
 
 
 # Cargar nuestro archivo .ui
 form_class = uic.loadUiType("calculadora.ui")[0]
- 
+
 def num(self,s):
     self.textB.insertPlainText(s)
 
@@ -40,9 +40,9 @@ def calcular (self,div):
   else:
     pantalla(self,"ingrese una expresion para calcular")
 
-class MyWindowClass(QtGui.QMainWindow, form_class):
+class MyWindowClass(QtWidgets.QMainWindow, form_class):
  def __init__(self, parent=None):
-    QtGui.QMainWindow.__init__(self, parent)
+    QtWidgets.QMainWindow.__init__(self, parent)
     self.setupUi(self)
     self.bt1.clicked.connect(self.btuno)
     self.bt2.clicked.connect(self.btdos)
@@ -66,21 +66,21 @@ class MyWindowClass(QtGui.QMainWindow, form_class):
     self.btcal.clicked.connect(self.igu)
     self.btpot.clicked.connect(self.pot)
     self.btrad.clicked.connect(self.rad)
-    
-    
 
- 
+
+
+
  # Evento del boton btn_CtoF
  def btuno(self):
     return num(self,"1")
  def btdos(self):
     return num(self,"2")
  def bttres(self):
-    return num(self,"3")        
+    return num(self,"3")
  def btcuatro(self):
     return num(self,"4")
  def btcinco(self):
-    return num(self,"5")        
+    return num(self,"5")
  def btseis(self):
     return num(self,"6")
  def btsiete(self):
@@ -88,24 +88,24 @@ class MyWindowClass(QtGui.QMainWindow, form_class):
  def btocho(self):
     return num(self,"8")
  def btnueve(self):
-    return num(self,"9")        
+    return num(self,"9")
  def btcero(self):
     return num(self,"0")
  def parI(self):
-    return num(self,"(")    
+    return num(self,"(")
  def parD(self):
-    return num(self,")")   
+    return num(self,")")
 
  def btms(self):
-  return operador(self,'+');   
+  return operador(self,'+');
  def btmen(self):
-  return operador(self,'-');    
+  return operador(self,'-');
  def btpo(self):
-  return operador(self,'*');    
+  return operador(self,'*');
  def btdi(self):
-  return operador(self,'/');    
+  return operador(self,'/');
  def btpu(self):
-  return operador(self,'.');   
+  return operador(self,'.');
  def btd(self):
   p = self.textB.toPlainText()
   pa = ""
@@ -126,16 +126,16 @@ class MyWindowClass(QtGui.QMainWindow, form_class):
   p = self.textB.toPlainText()
   r = pow(float(p),2)
   pantalla(self,str(r))
-  
+
 
 
  def rad(self):
   p = self.textB.toPlainText()
   r = math.sqrt(float(p))
   pantalla(self,str(r))
- 
 
-app = QtGui.QApplication(sys.argv)
+
+app = QtWidgets.QApplication(sys.argv)
 MyWindow = MyWindowClass(None)
 MyWindow.show()
 app.exec_()
