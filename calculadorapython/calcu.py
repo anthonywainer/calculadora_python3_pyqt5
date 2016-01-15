@@ -4,7 +4,7 @@
 # @anthony wainer
 
 import sys, math
-from PyQt5 import QtCore, QtGui, uic,QtWidgets
+from PyQt5 import QtCore, uic, QtWidgets
 
 
 # Cargar nuestro archivo .ui
@@ -38,7 +38,7 @@ def calcular (self,div):
     resultado = eval(str(div))
     pantalla(self,str(resultado))
   else:
-    pantalla(self,"ingrese una expresion para calcular")
+    pantalla(self,"ingrese una expresión para calcular: ")
 
 class MyWindowClass(QtWidgets.QMainWindow, form_class):
  def __init__(self, parent=None):
