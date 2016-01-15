@@ -1,0 +1,23 @@
+Calculadora de expresiones, 
+hecho en python3 y pyqt5
+
+para correr el proyecto es necesario instalar lo siguiente:
+Pyqt5:
+  windows:
+     x32:
+      http://sourceforge.net/projects/pyqt/files/PyQt5/PyQt-5.5.1/PyQt5-5.5.1-gpl-Py3.4-Qt5.5.1-x32.exe/download
+     x64:
+      http://sourceforge.net/projects/pyqt/files/PyQt5/PyQt-5.5.1/PyQt5-5.5.1-gpl-Py3.4-Qt5.5.1-x64.exe/download
+  Linux:
+    http://sourceforge.net/projects/pyqt/files/PyQt5/PyQt-5.5.1/
+  
+Python3.4:
+  windows:
+    x32:
+      https://www.python.org/ftp/python/3.4.4/python-3.4.4.msi
+    x64: 
+      https://www.python.org/ftp/python/3.4.4/python-3.4.4.amd64.msi
+      
+  Linux o mac:
+      https://www.python.org/downloads/release/python-344/
+  
